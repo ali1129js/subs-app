@@ -1,0 +1,15 @@
+.header {
+  text-align: center;
+  margin: 10px;
+  color: #a81b82;
+}
+.container {
+  border: 5px solid #495a8f;
+}
+/*Shadowbox*/
+
+.select {
+  height: 470px;
+  width: 23%;
+  padding: 0 10px;
+}
