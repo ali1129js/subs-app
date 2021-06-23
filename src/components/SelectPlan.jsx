@@ -1,48 +1,45 @@
+/*
+Each Parameter {Duration,Amount,UpFront} has its own component.
+
+*/
+
 import React, { Component } from "react";
 import Duration from "./Duration";
 import Amount from "./Amount";
+import UpFront from "./UpFront";
 
 class SelectPlan extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      duration: 0,
+      duration: "12",
       gigs: 0,
       upfront: false,
       total: 22,
     };
   }
+  handleDuration = (value) => {
+    this.setState({ duration: value });
+  };
+
   setChecked = () => {
     console.log("u");
   };
   render() {
     return (
       <div className="select">
-        <Duration />
+        <Duration handleDuration={this.handleDuration} />
         <Amount />
-        <div className="disc">
-          <span>
-            Pay Upfront:
-            <input type="text" type="checkbox" onChange={this.setChecked} />
-            Yes <input
-              type="text"
-              type="checkbox"
-              onChange={this.setChecked}
-            />{" "}
-            No
-          </span>
-        </div>
+        <UpFront />
         <div className="subs">Subscription type:</div>
         <div className="total">Total:{this.state.total}</div>
         <button>Next</button>
-        <label>
-          <input
-            type="checkbox"
-            defaultChecked={this.state.upfront}
-            onChange={() => this.setChecked(!this.state.upfront)}
-          />
-          Check Me!
-        </label>
+        <input
+          type="checkbox"
+          defaultChecked={this.state.upfront}
+          onChange={() => this.setChecked(!this.state.upfront)}
+        />
+        Check Me!
       </div>
     );
   }

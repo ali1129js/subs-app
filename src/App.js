@@ -1,3 +1,12 @@
+/*
+This component:
+- Data fetch
+- Pass data to child component
+- class component to utilize Life Cycle Method componentDidMount
+- error handling
+- conditional rendering (only render a child when data is here)
+*/
+
 import React, { Component } from "react";
 import SelectPlan from "./components/SelectPlan";
 import "./App.css";

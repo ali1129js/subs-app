@@ -1,22 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Duration = () => {
-  const [value, setValue] = useState(12);
+const Duration = ({ handleDuration }) => {
+  let value;
   return (
     <div className="drtn">
-      <div>
-        <span className="">Duration:</span>
-        <select
-          style={{ width: "10rem" }}
-          className="form-select"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        >
-          <option value="12">12 Months</option>
-          <option value="6">6 Months </option>
-          <option value="3">3 Months</option>
-        </select>
-      </div>
+      Duration:
+      <select
+        style={{ width: "10rem", display: "inline" }}
+        className="form-select m-3"
+        value={value}
+        onChange={(e) => handleDuration(e.target.value)}
+      >
+        <option value="12">12 Months</option>
+        <option value="6">6 Months </option>
+        <option value="3">3 Months</option>
+      </select>
     </div>
   );
 };
