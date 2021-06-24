@@ -1,28 +1,21 @@
 import React from "react";
 
-const Amount = () => {
+const Amount = ({ handleAmount }) => {
+  let value;
   return (
-    <span>
-      Amount of Gigabytes
-      <input
-        className="btn btn-outline-danger "
-        type="button"
-        onClick={console.log("clicked")}
-        value={"5"}
-      />
-      <input
-        className="btn btn-outline-danger "
-        type="button"
-        onClick={console.log("clicked")}
-        value={"10"}
-      />
-      <input
-        className="btn btn-outline-danger"
-        type="button"
-        onClick={console.log("clicked")}
-        value={"50"}
-      />
-    </span>
+    <div className="amnt">
+      Amount:
+      <select
+        style={{ width: "10rem", display: "inline" }}
+        className="form-select m-3"
+        value={value}
+        onChange={(e) => handleAmount(e.target.value)}
+      >
+        <option value="5">5 GigaBytes</option>
+        <option value="10">10 GigaBytes </option>
+        <option value="50">50 GigaBytes</option>
+      </select>
+    </div>
   );
 };
 export default Amount;
