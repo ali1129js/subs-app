@@ -1,6 +1,6 @@
 /*
 This component:
-- Data fetch
+- Data fetch in componentDidMount
 - Pass data to child component
 - error handling
 - conditional rendering
@@ -8,6 +8,8 @@ This component:
 
 import React, { Component } from "react";
 import SelectPlan from "./components/SelectPlan";
+import CreditData from "./components/CreditData";
+import Confirmation from "./components/Confirmation";
 import "./App.css";
 
 class App extends Component {
@@ -17,7 +19,13 @@ class App extends Component {
       error: null,
       isLoaded: false,
       plans: [],
-      step: "",
+
+      step: "1",
+
+      duration: "12",
+      amount: 5,
+      upfront: false,
+      email: "",
     };
   }
 
@@ -40,19 +48,42 @@ class App extends Component {
       );
   }
 
+  handleNext = () => {
+    this.setState({ step: "2" });
+  };
+  handleBack = () => {
+    this.setState({ step: "1" });
+  };
+  handleSum = () => {
+    this.setState({ step: "3" });
+  };
+  updateEmail = (value) => {
+    this.setState({ email: value });
+  };
   render() {
-    const { error, isLoaded, plans } = this.state;
+    const { error, isLoaded, plans, step, summary } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
+      return <div>Loading... </div>;
+    } else if (step === "1") {
       return (
         <div className="container mt-5">
-          <h3 className="header">Select Your Plan</h3>
-          <SelectPlan plans={plans} />
+          <SelectPlan plans={plans} handleNext={this.handleNext} />
         </div>
       );
+    } else if (step === "2") {
+      return (
+        <div className="container mt-5">
+          <CreditData
+            handleBack={this.handleBack}
+            handleSum={this.handleSum}
+            updateEmail={this.updateEmail}
+          />
+        </div>
+      );
+    } else if (step === "3") {
+      return <Confirmation summary={summary} />;
     }
   }
 }

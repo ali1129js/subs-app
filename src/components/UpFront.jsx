@@ -1,8 +1,13 @@
+/*
+-Functional component with hooks
+-Radio input
+-Sends true/false to App.js
+*/
+
 import React, { useState, useEffect } from "react";
 
 const UpFront = ({ handleUpFront }) => {
   const [checked, setChecked] = useState(false);
-
   useEffect(() => {
     handleUpFront(checked);
   }, [checked]);

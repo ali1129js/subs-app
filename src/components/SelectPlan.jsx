@@ -15,10 +15,10 @@ class SelectPlan extends Component {
       duration: "12",
       amount: 5,
       upfront: false,
-      total: 10,
     };
   }
 
+  //methods to update state
   handleDuration = (value) => {
     this.setState({ duration: value });
   };
@@ -34,17 +34,15 @@ class SelectPlan extends Component {
     const { duration, amount, upfront } = this.state;
     //getting prices from props
     const arrayPrices = this.props.plans.map((plan) => plan.price_usd_per_gb);
+
     if (upfront) {
       switch (duration) {
         case "3":
           return amount * arrayPrices[0] * 0.9;
-
         case "6":
           return amount * arrayPrices[1] * 0.9;
-
         case "12":
           return amount * arrayPrices[2] * 0.9;
-
         default:
           return amount * arrayPrices[2] * 0.9;
       }
@@ -52,73 +50,42 @@ class SelectPlan extends Component {
       switch (duration) {
         case "3":
           return amount * arrayPrices[0];
-
         case "6":
           return amount * arrayPrices[1];
-
         case "12":
           return amount * arrayPrices[2];
-
         default:
           return amount * arrayPrices[2];
       }
     }
   };
-  nextStep = () => {
-    console.log("clickeddsaas");
-  };
+
   render() {
     return (
-      <div className="select">
-        <div className="params">
-          <Duration handleDuration={this.handleDuration} />
-          <Amount handleAmount={this.handleAmount} />
-          <UpFront handleUpFront={this.handleUpFront} />
+      <>
+        <div className="select">
+          <div className="params">
+            <div className="header">Select your Plan</div>
+            <Duration handleDuration={this.handleDuration} />
+            <Amount handleAmount={this.handleAmount} />
+            <UpFront handleUpFront={this.handleUpFront} />
+          </div>
+          <div className="subs">
+            <h5>Current Subscription:</h5>
+            <div className="spc">
+              {this.state.amount} GigaBytes for {this.state.duration} Months
+            </div>
+            <div className="total">Total Cost:{this.calculateCost()}$</div>
+          </div>
+          <button
+            className="btn btn-outline-info btn-lg m-2"
+            onClick={() => this.props.handleNext()}
+          >
+            Next
+          </button>
         </div>
-        <div className="subs">
-          Subscription type: {this.state.amount} GigaByte for{" "}
-          {this.state.duration} Months
-        </div>
-        <div className="total">Total Cost:{this.calculateCost()}$</div>
-        <button
-          className="btn btn-outline-info btn-lg m-2"
-          onClick={() => this.nextStep()}
-        >
-          Next
-        </button>
-      </div>
+      </>
     );
   }
 }
 export default SelectPlan;
-
-//
-// if (upfront) {
-//   switch (duration) {
-//     case "3":
-//       return amount * arrayPrices[0] * 0.9;
-//       break;
-//     case "6":
-//       return amount * arrayPrices[1] * 0.9;
-//       break;
-//     case "12":
-//       return amount * arrayPrices[2] * 0.9;
-//       break;
-//     default:
-//       return amount * arrayPrices[2] * 0.9;
-//   }
-// } else if (!upfront) {
-//   switch (duration) {
-//     case "3":
-//       return amount * arrayPrices[0];
-//       break;
-//     case "6":
-//       return amount * arrayPrices[1];
-//       break;
-//     case "12":
-//       return amount * arrayPrices[2];
-//       break;
-//     default:
-//       return amount * arrayPrices[2];
-//   }
-// }

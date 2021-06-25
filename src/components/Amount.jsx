@@ -1,3 +1,8 @@
+/*
+-Functional component
+-Select input
+-Sends amount's value to App.js
+*/
 import React from "react";
 
 const Amount = ({ handleAmount }) => {

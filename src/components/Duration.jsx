@@ -1,3 +1,9 @@
+/*
+-Functional component
+- Select input
+- sends duration's value to App.js
+*/
+
 import React from "react";
 
 const Duration = ({ handleDuration }) => {

@@ -2,19 +2,40 @@
   text-align: center;
   margin: 10px;
   color: #a81b82;
+  font-size: 20px;
 }
 .container {
   border: 5px solid #495a8f;
 }
-/*Shadowbox*/
 
 .select {
-  height: 470px;
-  width: 50%;
-  padding: 0 10px;
+  display: inline-block;
+  padding: 10px;
 }
 .params {
   border: 1px solid #495a8f;
   padding: 15px;
   margin: 50px;
+  box-shadow: 5px 5px 5px 5px grey;
+}
+.subs {
+  text-align: center;
+  padding: 15px;
+  margin: 50px;
+  border: 1px solid #495a8f;
+  box-shadow: 5px 5px 5px 5px grey;
+}
+.total {
+  margin-top: 50px;
+  font-size: 2rem;
+}
+.spc {
+  color: #ff5252;
+  margin-top: 20px;
+}
+.stripe {
+  width: 50%;
+  border: 2px solid #bdc3c7;
+  margin: 2em;
+  padding: 10px;
 }
