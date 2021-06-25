@@ -2,12 +2,12 @@
 2. App.js
 3. SelectPlan
 
-- Duration
-- Amount
-- Upfront
+---|- Duration
+---|- Amount
+---|- Upfront
 
 4. CreditData
 
-- email
+---|- email
 
 5. Summary
